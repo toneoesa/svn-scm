@@ -510,6 +510,10 @@ export class Repository implements IRemoteRepository {
       "sourceControl.hideUnversioned"
     );
 
+    const hideObstructed = configuration.get<boolean>(
+      "sourceControl.hideObstructed"
+    );
+
     const ignoreList = configuration.get<string[]>("sourceControl.ignore");
 
     for (const status of statusesRepository) {
@@ -600,6 +604,11 @@ export class Repository implements IRemoteRepository {
           continue;
         }
         unversioned.push(resource);
+      } else if (status.status === Status.OBSTRUCTED) {
+        if (hideObstructed) {
+          continue;
+        }
+        changes.push(resource);
       } else if (status.changelist) {
         let changelist = changelists.get(status.changelist);
         if (!changelist) {

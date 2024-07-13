@@ -1240,6 +1240,11 @@
                     "description": "Hide unversioned files in Source Control UI",
                     "default": false
                 },
+                "svn.sourceControl.hideObstructed": {
+                    "type": "boolean",
+                    "description": "Hide obstructed files in Source Control UI",
+                    "default": false
+                },
                 "svn.sourceControl.ignore": {
                     "type": "array",
                     "description": "Ignore unversioned files like .gitignore, Configuring this will overlook the default ignore rule",
